@@ -2,35 +2,58 @@ from math import trunc, ceil
 import numpy as np
 
 # Global variables - table 2
-MATRIX_P = ([60,40,30],
-           [70,50,40],
-            [120,80,40],
+MATRIX_P = ([80,60,40],
+            [60,40,30],
+            [70,50,40],
             [80,50,30],
+            [120,80,40],
+            [200,130,80],
+            [15,12,10],
+            [80,50,30],
+            [80,50,30],
+            [80,60,40],
             [60,40,20],
             [50,40,30],
             [90,60,40],
-            [70,50,40],)
+            [300,200,150],
+            [70,50,40])
 
-MATRIX_K = ([40,30,20],
+
+MATRIX_K = ([60,40,20],
+            [40,30,20],
             [50,40,30],
+            [40,30,20],
             [90,70,40],
+            [160,100,60],
+            [12,6,4],
             [30,20,10],
+            [40,30,20],
+            [60,40,20],
             [40,30,20],
             [40,30,20],
             [60,40,30],
-            [50,40,30],)
+            [300,200,100],
+            [50,40,30])
 
-VECT_N = (50,80,40,20,40,70,90,60)
+VECT_N = (50, 50, 80, 15, 40, 90, 9, 20, 15, 60, 40, 70, 90, 190, 60)
+# VECT_N = (50,80,40,20,40,70,90,60)
 
 EXPANSION_FACTOR = 1.25
 
-OPTIONS = ("Algodão (sequeiro)", 
-           "Algodão (irrigado)",
-           "Batada doce",
+OPTIONS = ("Abóbora", 
+           "Algodão Herbáceo (Sequeiro)", 
+           "Algodão Herbáceo (Irrigado)",
+           "Amendoim",
+           "Batata doce",
+           "Batatinha", 
+           "Cebolinha ou Coentro", 
            "Feijão de corda", 
+           "Feijão mulatinho (Sequeiro)", 
+           "Mamona", 
            "Mandioca", 
-           "Milho (sequeiro)",
-           "Milho (irrigado)",
+           "Milho (Sequeiro)", 
+           "Milho (Irrigado)",
+           "Pimentão", 
            "Sorgo forrageiro")
 
 CONVERSION = {

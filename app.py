@@ -73,19 +73,19 @@ with col2:
     sed_n = st.number_input(label = "N (g/kg) ",
                              min_value=0.,
                              max_value= 10000.,
-                             value = 2.,
+                             value = 5.,
                              key = "sed_n",
                               step=0.01,format="%.2f")
     sed_p = st.number_input(label = "P (mg/kg) ",
                              min_value=0.,
                              max_value= 10000., 
-                             value = 2.,
+                             value = 5.,
                              key = "sed_p",
                               step=0.01,format="%.2f")
     sed_k = st.number_input(label = "K (cmolc/kg) ",
                              min_value=0.,
                              max_value= 10000.,
-                             value = 2.,
+                             value = 5.,
                              key = "sed_k",
                               step=0.01,format="%.2f")
     sed_ce = st.number_input(label = "C.E. (dS/m)",
@@ -127,10 +127,17 @@ with col4:
     st.write('<p style="font-size:24px"><b>Manejo da cultura e <br> dos sedimentos</b></p>',
                      unsafe_allow_html=True)
     crop = st.selectbox(label = "Cultura",
-                        options = ("Algodão (sequeiro)", "Algodão (irrigado)", "Batada doce",
-                        "Feijão de corda", "Mandioca", "Milho (sequeiro)",
-                        "Milho (irrigado)", "Sorgo forrageiro"),
+                        # options = ("Algodão (sequeiro)", "Algodão (irrigado)", "Batada doce",
+                        # "Feijão de corda", "Mandioca", "Milho (sequeiro)",
+                        # "Milho (irrigado)", "Sorgo forrageiro"),
+                        options = ("Abóbora", "Algodão Herbáceo (Sequeiro)", "Algodão Herbáceo (Irrigado)",
+                                 "Amendoim", "Batata doce", "Batatinha", "Cebolinha ou Coentro", 
+                                 "Feijão de corda", "Feijão mulatinho (Sequeiro)", "Mamona", 
+                                 "Mandioca", "Milho (Sequeiro)", "Milho (Irrigado)", "Pimentão", 
+                                 "Sorgo forrageiro"),
                         key = "crop")
+    
+    
 
     sup = st.selectbox(label = "Nutriente suplementado por sedimentos",
                         options = ("Nitrogênio", "Fósforo", "Potássio"),
