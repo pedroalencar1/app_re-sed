@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 
-import functions_resed as rsd
+import python.functions_resed as rsd
 
 st.set_page_config(layout="wide")
 
@@ -62,7 +62,7 @@ with col1:
     soil_dens = st.number_input(label = "densidade (g/cm³ ou kg/dm³)", 
                                  min_value=0.,
                                  max_value= 10000., 
-                                 value = 1.6,
+                                 value = 1.5,
                                  key = "soil_dens",
                               step=0.01,format="%.2f")
 
@@ -85,7 +85,7 @@ with col2:
     sed_k = st.number_input(label = "K (cmolc/kg) ",
                              min_value=0.,
                              max_value= 10000.,
-                             value = 100.,
+                             value = 2.,
                              key = "sed_k",
                               step=0.01,format="%.2f")
     sed_ce = st.number_input(label = "C.E. (dS/m)",
@@ -122,7 +122,6 @@ with col3:
                               key = "price_k",
                               step=0.01,format="%.2f")
    
-# col4, col41, col42=  st.columns([1,1,1])
 with col4:
     # st.subheader("Manejo da cultura")
     st.write('<p style="font-size:24px"><b>Manejo da cultura e <br> dos sedimentos</b></p>',
@@ -131,12 +130,10 @@ with col4:
                         options = ("Algodão (sequeiro)", "Algodão (irrigado)", "Batada doce",
                         "Feijão de corda", "Mandioca", "Milho (sequeiro)",
                         "Milho (irrigado)", "Sorgo forrageiro"),
-                        # value = "Sorgo forrageiro",
                         key = "crop")
 
     sup = st.selectbox(label = "Nutriente suplementado por sedimentos",
                         options = ("Nitrogênio", "Fósforo", "Potássio"),
-                        # value = "Fósforo",
                         key = "sup")
 
     dist = st.number_input(label = "Diatância de transporte (m)",
@@ -249,15 +246,14 @@ else:
 st.write(" ")    
 st.write(" ")    
 st.write(" ")    
-st.write("""<u>Dica: Salve esta página como um relatório em pdf</u><br>
+st.write("""<p style='color:#808080;'><i><u>Dica: Salve esta página como um relatório em pdf</u><br>
          &nbsp;&nbsp;&nbsp;&nbsp; 1) Clique com o botão direito do mouse em qualquer ponto da tela e escolha 'imprimir'.<br>
          &nbsp;&nbsp;&nbsp;&nbsp; 2) Escolha _layout_ paisagem para uma melhor visualização. <br>
          &nbsp;&nbsp;&nbsp;&nbsp; 3) Pressione salvar. <br>
          &nbsp;&nbsp;&nbsp;&nbsp; 4) Pronto. O arquivo será salvo automaticamente na sua pasta de downloads.
+         </i></p>
          """,
          unsafe_allow_html=True)
-# st.print(sidebar=False, printer="PDF")
-
 
 
     
