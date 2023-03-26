@@ -215,13 +215,13 @@ def additional_supplements(deficit_new, depth, price_n, price_p, price_k):
     bag_p = ceil(mass_p/25)
     bag_k = ceil(mass_k/25)
     
-    cost_n = bag_n*price_n
-    cost_p = bag_p*price_p
-    cost_k = bag_k*price_k
+    cost_n = ceil(mass_n)*price_n
+    cost_p = ceil(mass_p)*price_p
+    cost_k = ceil(mass_k)*price_k
     
     output = {"Mass N": mass_n,
               "Mass P": mass_p,
-              "Mass k": mass_k,
+              "Mass K": mass_k,
               "Bag N": bag_n,
               "Bag P": bag_p,
               "Bag K": bag_k,
@@ -244,15 +244,29 @@ def soil_movement(d_sed):
 
 def cost_no_sed(npk_demand, depth, price_n, price_p, price_k):
     
-    prices = np.array([price_n, price_p, price_k])
-    demand_cost = np.array(list(npk_demand.values()))
+    # prices = np.array([price_n, price_p, price_k])
+    # demand_cost = np.array(list(npk_demand.values()))
     
-    bags = np.ceil(demand_cost*depth*100/25)
+    
+    mass_n = npk_demand["N"]*depth*100*CONVERSION["N -> Urea"]  #kg
+    mass_p = npk_demand["P"]*depth*100*CONVERSION["P -> P2O5"]*CONVERSION["P2O5 -> P2O5-18p"] #kg
+    mass_k = npk_demand["K"]*depth*100*CONVERSION["K -> K2O"]*CONVERSION["K2O -> KCl"]  #kg
+    
+    cost_n = ceil(mass_n)*price_n
+    cost_p = ceil(mass_p)*price_p
+    cost_k = ceil(mass_k)*price_k
+    
+    # kgs = np.ceil(demand_cost*depth*100)
 
-    cost_no_sed = bags*prices
-    sum_cost = np.sum(cost_no_sed)
+    output = {"Mass N": mass_n,
+              "Mass P": mass_p,
+              "Mass K": mass_k,
+              "Cost N": cost_n,
+              "Cost P": cost_p,
+              "Cost K": cost_k,
+              }
     
-    return sum_cost
+    return output
     
     
     
@@ -302,9 +316,9 @@ def bags_supplement(supplement):
         "K":supplement["K"]*CONVERSION["K2O -> KCl"]}
     
     sup_bag = {
-        "N":trunc(sup_com["N"]/25)+1,
-        "P":trunc(sup_com["P"]/25)+1,
-        "K":trunc(sup_com["K"]/25)+1}
+        "N":trunc(sup_com["N"]),
+        "P":trunc(sup_com["P"]),
+        "K":trunc(sup_com["K"])}
     
     return sup_bag
 
